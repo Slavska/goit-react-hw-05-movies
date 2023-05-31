@@ -1,10 +1,9 @@
-import { Outlet } from 'react-router-dom';
+import { MoviesAbout } from 'components/MoviesDetails/MoviesAbout';
 
 export const MovieDetails = () => {
   return (
     <>
-      <p>MovieDetails</p>
-      <Outlet />
+      <MoviesAbout />
     </>
   );
 };

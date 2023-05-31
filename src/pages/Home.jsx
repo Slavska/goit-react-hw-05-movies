@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { getTrends } from 'services/fetch';
 import { useEffect, useState } from 'react';
-import { ListTrend } from 'components/ListTrends';
+import { ListTrend } from 'components/Home/ListTrends';
 
 export function Home() {
   const [trends, setMovies] = useState([]);

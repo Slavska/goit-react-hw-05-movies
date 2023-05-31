@@ -17,26 +17,18 @@ export const searchMovies = async input => {
   return items.data;
 };
 export async function getDetails(id) {
-  const items = await axios.get(
-    `${BASE_URL}/search/movie/${id}&api_key=${API_KEY}`
-  );
+  const items = await axios.get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
   return items.data;
 }
 export async function getCredits(id) {
   const items = await axios.get(
-    `${BASE_URL}/search/movie/${id}/credits&api_key=${API_KEY}`
+    `${BASE_URL}/movie/${id}/credits?api_key=${API_KEY}`
   );
   return items.data;
 }
 export async function getReviews(id) {
   const items = await axios.get(
-    `${BASE_URL}/search/movie/${id}/reviews&api_key=${API_KEY}`
-  );
-  return items.data;
-}
-export async function getPosters(id) {
-  const items = await axios.get(
-    `${BASE_URL}/search/movie/${id}/images&api_key=${API_KEY}`
+    `${BASE_URL}/movie/${id}/reviews?api_key=${API_KEY}`
   );
   return items.data;
 }

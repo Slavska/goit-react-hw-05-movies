@@ -3,9 +3,11 @@ import { useState } from 'react';
 
 export const MoviesForm = ({ onHandleSubmit }) => {
   const [input, setInput] = useState('');
+
   const onChange = e => {
     setInput(e.target.value.toLowerCase());
   };
+
   const onSubmit = e => {
     e.preventDefault();
     if (input.trim() === '' || input.trim() === setInput.input) {
@@ -27,7 +29,7 @@ export const MoviesForm = ({ onHandleSubmit }) => {
         autoFocus
         placeholder="Search movies"
       />
-      <button>Search</button>
+      <button type="submit">Search</button>
     </form>
   );
 };

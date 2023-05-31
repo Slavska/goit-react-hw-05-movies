@@ -1,12 +1,13 @@
-import { MoviesForm } from 'components/MoviesForm';
-import { Outlet } from 'react-router-dom';
+import { MoviesForm } from 'components/Movie/MoviesForm';
+import { Outlet, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { searchMovies } from 'services/fetch';
-import { SearchList } from 'components/SearchList';
+import { SearchList } from 'components/Movie/SearchList';
 
 export const Movies = () => {
-  const [input, setInput] = useState('');
+  const [search, setSearch] = useSearchParams();
   const [searchList, setSearchList] = useState([]);
+  const input = search.get('input');
 
   useEffect(() => {
     if (!input) {
@@ -21,10 +22,9 @@ export const Movies = () => {
       });
   }, [input]);
 
-  const addSubmit = newInput => {
-    setInput(newInput);
+  const addSubmit = input => {
+    setSearch({ input: input });
   };
-  console.log(searchList);
   return (
     <>
       <MoviesForm onHandleSubmit={addSubmit} />
