@@ -1,0 +1,59 @@
+.movieWrapper {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+}
+.moviePoster {
+  border-radius: 20px;
+  border: 1px solid orangered;
+  margin-right: 20px;
+}
+.movieTitle {
+  color: orangered;
+  margin-bottom: 15px;
+}
+.movieSubtitle {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.movieLink {
+  width: 120px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid orangered;
+}
+.movieBack {
+  border-bottom: 1px solid orangered;
+  padding-bottom: 10px;
+  width: 100px;
+}
+.castList {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: flex-start;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+.castItem {
+  width: 130px;
+}
+.castPhoto {
+  border-radius: 10px;
+  border: 1px solid orangered;
+}
+.castText {
+  margin-top: 10px;
+}
+.reviewsList {
+  margin-top: 50px;
+}
+.reviewsTitle {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.reviewsItem {
+  padding-bottom: 10px;
+  border-bottom: 1px solid orangered;
+}

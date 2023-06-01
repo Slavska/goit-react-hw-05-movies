@@ -1,21 +1,32 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Container, LinkStyled, Ul, Li } from 'components/App/SharedStyled';
+import defaultPoster from '../../img/defaultPoster.png';
+import PropTypes from 'prop-types';
+
+const baseURL = 'https://image.tmdb.org/t/p/original';
 
 export const SearchList = ({ searchList }) => {
-  const location = useLocation();
-
   return (
-    <>
-      <ul>
-        {searchList.map(({ id, title }) => {
+    <Container>
+      <Ul>
+        {searchList.map(({ id, title, poster_path }) => {
           return (
-            <li key={id}>
-              <Link to={`/movies/${id}`} state={{ from: location }}>
-                {title}
-              </Link>
-            </li>
+            <Li key={id}>
+              <LinkStyled to={`/movies/${id}`}>
+                <img
+                  alt={title}
+                  src={poster_path ? baseURL + poster_path : defaultPoster}
+                  height="300"
+                  width="220"
+                />
+                <span>{title}</span>
+              </LinkStyled>
+            </Li>
           );
         })}
-      </ul>
-    </>
+      </Ul>
+    </Container>
   );
+};
+SearchList.propTypes = {
+  searchList: PropTypes.array.isRequired,
 };

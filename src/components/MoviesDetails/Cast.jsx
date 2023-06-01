@@ -1,12 +1,16 @@
+import { Container } from 'components/App/SharedStyled';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCredits } from 'services/fetch';
+import { toast } from 'react-toastify';
+import css from './MovieDetails.module.css';
 import defaultActor from '../../img/defaultActor.png';
+import { Loader } from 'components/Loader/Loader';
 
 const baseURL = 'https://image.tmdb.org/t/p/original';
 
-export const Cast = () => {
+export default function Cast() {
   const { movieId } = useParams('');
   const [actors, setActors] = useState([]);
   const [status, setStatus] = useState(false);
@@ -17,35 +21,37 @@ export const Cast = () => {
         setActors(cast);
       })
       .catch(error => {
-        console.log(error);
+        toast.error(error);
       })
       .finally(() => setStatus(false));
   }, [movieId]);
   return (
-    <>
-      {actors && (
-        <ul>
+    <Container>
+      {status && <Loader />}
+      {actors.length !== 0 && (
+        <ul className={css.castList}>
           {actors.map(
             ({ original_name, character, profile_path, credit_id }) => (
-              <li key={credit_id}>
+              <li className={css.castItem} key={credit_id}>
                 <img
+                  className={css.castPhoto}
                   alt={original_name}
                   src={
                     !(profile_path === null)
                       ? baseURL + profile_path
                       : defaultActor
                   }
-                  height="300"
-                  width="200"
+                  height="180"
+                  width="130"
                 />
-                <p>{original_name}</p>
-                <p>Character: {character}</p>
+                <p className={css.castText}>{original_name}</p>
+                <p className={css.castText}>Character: {character}</p>
               </li>
             )
           )}
         </ul>
       )}
       {!status && actors.length === 0 && <p>No results</p>}
-    </>
+    </Container>
   );
-};
+}

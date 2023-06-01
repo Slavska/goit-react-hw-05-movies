@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getDetails } from 'services/fetch';
-import { Outlet, useParams, Link, useNavigate } from 'react-router-dom';
+import { Outlet, useParams, useNavigate } from 'react-router-dom';
 import defaultPoster from '../../img/defaultPoster.png';
+import { LinkStyled } from 'components/App/SharedStyled';
+import css from './MovieDetails.module.css';
+import { toast } from 'react-toastify';
+import { Loader } from 'components/Loader/Loader';
+import { FiArrowLeft } from 'react-icons/fi';
 
 const baseURL = 'https://image.tmdb.org/t/p/original';
 
@@ -29,42 +34,54 @@ export const MoviesAbout = () => {
         setData(response);
       })
       .catch(error => {
-        console.log(error);
+        toast.error(error);
       })
       .finally(() => setStatus(false));
   }, [movieId]);
   return (
     <>
+      {status && <Loader />}
       {data && (
-        <div>
-          <Link onClick={() => navigate(-1)}>Go back</Link>
-          <img
-            alt={original_title}
-            src={poster_path ? baseURL + poster_path : defaultPoster}
-            height="400"
-            width="280"
-          />
-          <h2>
-            {original_title} {release_date.slice(0, 4)}
-          </h2>
-          <p>User score: {Math.round(vote_average * 10)}%</p>
-          <h3>Overview</h3>
-          <p>{overview}</p>
-          <h3>Genres</h3>
-          <p>{genres.map(genre => genre.name).join(' ')}</p>
-          <p>Additional Information</p>
-          <div>
-            <Link to="cast" replace>
-              Cast
-            </Link>
-            <Link to="reviews" replace>
-              Reviews
-            </Link>
+        <>
+          <div className={css.movieBack}>
+            <LinkStyled onClick={() => navigate(-1)}>
+              <FiArrowLeft />
+              Go back
+            </LinkStyled>
           </div>
-        </div>
+          <div className={css.movieWrapper}>
+            <img
+              className={css.moviePoster}
+              alt={original_title}
+              src={poster_path ? baseURL + poster_path : defaultPoster}
+              height="350"
+              width="240"
+            />
+            <div className={css.movieList}>
+              <h2 className={css.movieTitle}>
+                {original_title} {release_date.slice(0, 4)}
+              </h2>
+              <p>User score: {Math.round(vote_average * 10)}%</p>
+              <h3 className={css.movieSubtitle}>Overview</h3>
+              <p>{overview}</p>
+              <h3 className={css.movieSubtitle}>Genres</h3>
+              <p>{genres.map(genre => genre.name).join(' ')}</p>
+              <h3 className={css.movieSubtitle}>Additional Information</h3>
+
+              <div className={css.movieLink}>
+                <LinkStyled to="cast" replace>
+                  Cast
+                </LinkStyled>
+                <LinkStyled to="reviews" replace>
+                  Reviews
+                </LinkStyled>
+              </div>
+            </div>
+          </div>
+        </>
       )}
-      {!status && data.length === 0 && <p>We are sorry, no results</p>}
       <Outlet />
+      {!status && data.length === 0 && <p>We are sorry, no results</p>}
     </>
   );
 };

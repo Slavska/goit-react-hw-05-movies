@@ -1,12 +1,15 @@
 import { MoviesForm } from 'components/Movie/MoviesForm';
-import { Outlet, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { searchMovies } from 'services/fetch';
 import { SearchList } from 'components/Movie/SearchList';
+import { toast } from 'react-toastify';
+import { Loader } from 'components/Loader/Loader';
 
-export const Movies = () => {
+export default function Movies() {
   const [search, setSearch] = useSearchParams();
   const [searchList, setSearchList] = useState([]);
+  const [status, setStatus] = useState(false);
   const input = search.get('input');
 
   useEffect(() => {
@@ -15,10 +18,14 @@ export const Movies = () => {
     }
     searchMovies(input)
       .then(({ results }) => {
+        setStatus(true);
         setSearchList(results);
       })
       .catch(error => {
-        console.log(error);
+        toast.error(error);
+      })
+      .finally(() => {
+        setStatus(false);
       });
   }, [input]);
 
@@ -28,8 +35,8 @@ export const Movies = () => {
   return (
     <>
       <MoviesForm onHandleSubmit={addSubmit} />
-      {searchList && <SearchList searchList={searchList} />}
-      <Outlet />
+      {status && <Loader />}
+      {searchList.length > 0 && <SearchList searchList={searchList} />}
     </>
   );
-};
+}
