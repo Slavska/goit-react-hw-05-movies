@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getDetails } from 'services/fetch';
 import { Outlet, useParams, useNavigate } from 'react-router-dom';
 import defaultPoster from '../../img/defaultPoster.png';
-import { LinkStyled } from 'components/App/SharedStyled';
+import { LinkStyled } from 'components/SharedLoyout/SharedStyled';
 import css from './MovieDetails.module.css';
 import { toast } from 'react-toastify';
 import { Loader } from 'components/Loader/Loader';

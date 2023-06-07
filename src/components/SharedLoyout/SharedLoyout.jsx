@@ -1,4 +1,4 @@
-import { Header, LinkNav } from 'components/App/SharedStyled';
+import { Header, LinkNav } from 'components/SharedLoyout/SharedStyled';
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Loader } from 'components/Loader/Loader';

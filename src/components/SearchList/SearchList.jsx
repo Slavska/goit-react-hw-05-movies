@@ -1,4 +1,9 @@
-import { Container, LinkStyled, Ul, Li } from 'components/App/SharedStyled';
+import {
+  Container,
+  LinkStyled,
+  Ul,
+  Li,
+} from 'components/SharedLoyout/SharedStyled';
 import defaultPoster from '../../img/defaultPoster.png';
 import PropTypes from 'prop-types';
 

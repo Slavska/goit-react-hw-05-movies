@@ -1,10 +1,10 @@
-import { Container } from 'components/App/SharedStyled';
+import { Container } from 'components/SharedLoyout/SharedStyled';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCredits } from 'services/fetch';
 import { toast } from 'react-toastify';
-import css from './MovieDetails.module.css';
+import css from './Cast.module.css';
 import defaultActor from '../../img/defaultActor.png';
 import { Loader } from 'components/Loader/Loader';
 

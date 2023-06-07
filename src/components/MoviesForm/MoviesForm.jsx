@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 import { useState } from 'react';
-import { Container } from 'components/App/SharedStyled';
+import { Container } from 'components/SharedLoyout/SharedStyled';
 import css from './Movie.module.css';
 import PropTypes from 'prop-types';
 import { FiSearch } from 'react-icons/fi';

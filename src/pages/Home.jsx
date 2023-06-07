@@ -1,7 +1,7 @@
 import { getTrends } from 'services/fetch';
 import { useEffect, useState } from 'react';
-import { ListTrend } from 'components/Home/ListTrends';
-import { H1 } from 'components/App/SharedStyled';
+import { ListTrend } from 'components/ListTrends/ListTrends';
+import { H1 } from 'components/SharedLoyout/SharedStyled';
 import { toast } from 'react-toastify';
 import { Loader } from 'components/Loader/Loader';
 

@@ -1,0 +1,11 @@
+.reviewsList {
+  margin-top: 50px;
+}
+.reviewsTitle {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.reviewsItem {
+  padding-bottom: 10px;
+  border-bottom: 1px solid orangered;
+}

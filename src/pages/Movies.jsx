@@ -1,8 +1,8 @@
-import { MoviesForm } from 'components/Movie/MoviesForm';
+import { MoviesForm } from 'components/MoviesForm/MoviesForm';
 import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { searchMovies } from 'services/fetch';
-import { SearchList } from 'components/Movie/SearchList';
+import { SearchList } from 'components/SearchList/SearchList';
 import { toast } from 'react-toastify';
 import { Loader } from 'components/Loader/Loader';
 

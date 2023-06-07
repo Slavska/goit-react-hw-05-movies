@@ -1,9 +1,9 @@
-import { Container } from 'components/App/SharedStyled';
+import { Container } from 'components/SharedLoyout/SharedStyled';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from 'services/fetch';
 import { toast } from 'react-toastify';
-import css from './MovieDetails.module.css';
+import css from './Reviews.module.css';
 import { Loader } from 'components/Loader/Loader';
 
 export default function Reviews() {
